@@ -13,7 +13,7 @@ const Hero = () => {
             <div className="hero-content text-neutral-content text-center">
                 <div className="max-w-md">
                     <motion.h1
-                        className="mb-5 text-5xl font-bold"
+                        className="mb-5 text-4xl font-bold"
                         initial={{ opacity: 0, y: -50 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1 }}
@@ -21,7 +21,7 @@ const Hero = () => {
                         Hello, I'm Ankit Kumar
                     </motion.h1>
                     <motion.p
-                        className="mb-5 text-3xl"
+                        className="mb-5 text-2xl"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5, duration: 1 }}

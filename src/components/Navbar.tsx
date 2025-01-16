@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import GithubButton from "./GithubButton";
 
 
 const Navbar = () => {
@@ -49,15 +48,7 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <a
-                    href="https://github.com/1820ankit2029"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-primary flex items-center gap-2"
-                >
-                    <FontAwesomeIcon icon={faGithub} className="text-xl" />
-                    View on GitHub
-                </a>
+                <GithubButton />
             </div>
         </div>
     )

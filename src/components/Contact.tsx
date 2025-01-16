@@ -16,51 +16,70 @@ const Contact = () => {
       body: JSON.stringify(formData),
     });
     if (response.ok) setSubmitted(true);
+    else console.log(response.status);
   };
 
   return (
-    <section id="contact" className="h-screen py-16 bg-gray-100 dark:bg-gray-900">
-      <div className="container mx-auto text-center">
-        <h2 className="text-3xl font-bold text-gray-900 dark:text-white">📬 Contact Me</h2>
+    <div className="p-8 max-w-4xl mx-auto">
+      <h1 className="text-4xl font-bold text-center mb-8">Contact Me</h1>
+      
+      {/* Contact Form */}
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Name Field */}
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Your Name</span>
+          </label>
+          <input
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
 
-        {submitted ? (
-          <p className="text-green-500 mt-4">Thank you! I will get back to you soon.</p>
-        ) : (
-          <form onSubmit={handleSubmit} className="mt-6 max-w-lg mx-auto">
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              required
-              onChange={handleChange}
-              className="w-full p-3 mb-3 border rounded"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
-              onChange={handleChange}
-              className="w-full p-3 mb-3 border rounded"
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows={4}
-              required
-              onChange={handleChange}
-              className="w-full p-3 mb-3 border rounded"
-            ></textarea>
-            <button
-              type="submit"
-              className="px-6 py-3 bg-blue-600 text-white font-semibold rounded shadow hover:bg-blue-500 transition"
-            >
-              Send Message
-            </button>
-          </form>
-        )}
-      </div>
-    </section>
+        {/* Email Field */}
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Your Email</span>
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            className="input input-bordered w-full"
+            required
+          />
+        </div>
+
+        {/* Message Field */}
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">Your Message</span>
+          </label>
+          <textarea
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            className="textarea textarea-bordered w-full"
+            required
+          ></textarea>
+        </div>
+
+        {/* Submit Button */}
+        <div className="form-control">
+          <button
+            type="submit"
+            className="btn btn-primary w-full"
+          >
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
   );
 };
 
