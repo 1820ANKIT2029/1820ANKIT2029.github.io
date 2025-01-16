@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import DarkModeToggle from "./DarkModeToggle";
-import { useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
 
 
 const Navbar = () => {
@@ -11,66 +11,56 @@ const Navbar = () => {
         "Projects": "projects",
         "Contact": "contact"
     };
-    const [menuOpen, setMenuOpen] = useState(false);
 
     return (
-        <nav className="fixed top-0 w-full bg-gray-900 text-white dark:bg-gray-100 dark:text-gray-900 shadow-lg p-4 z-50">
-            <div className="container mx-auto flex justify-between items-center">
-                <h1 className="text-2xl font-bold">Ankit Kumar</h1>
-
-                {/* Desktop Links */}
-                <div className="hidden md:flex space-x-6">
-                    {Object.entries(menulist).map(([label, path]) => (
-                        <div key={label} className="hover:text-blue-400 transition duration-200">
-                            <Link to={path}>{label}</Link>
-                        </div>
-                    ))}
+        <div className="navbar bg-base-100">
+            <div className="navbar-start">
+                <div className="dropdown">
+                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-5 w-5"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M4 6h16M4 12h8m-8 6h16" />
+                        </svg>
+                    </div>
+                    <ul
+                        tabIndex={0}
+                        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                    >
+                        {Object.entries(menulist).map(([label, path]) => (
+                            <li className="text-base"><Link to={path}>{label}</Link></li>
+                        ))}
+                    </ul>
                 </div>
-
-                {/* Mobile Menu Button */}
-                <button
-                    className="md:hidden text-white dark:text-gray-900"
-                    onClick={() => setMenuOpen(!menuOpen)}
-                >
-                    ☰
-                </button>
-                
-                <DarkModeToggle />
+                <a className="btn btn-ghost text-xl lg:text-3xl font-semibold">Ankit Kumar</a>
             </div>
-
-            {/* Mobile Menu */}
-            {menuOpen && (
-                <div className="md:hidden flex flex-col space-y-4 mt-4 bg-gray-800 dark:bg-gray-200">
+            <div className="navbar-center hidden lg:flex">
+                <ul className="menu menu-horizontal px-1">
                     {Object.entries(menulist).map(([label, path]) => (
-                        <div
-                            key={label}
-                            onClick={() => setMenuOpen(false)}
-                            className="text-center py-2 bg-gray-800 hover:bg-gray-700"
-                        >
-                            <Link to={path}>{label}</Link>
-                        </div>
+                        <li className="text-lg"><Link to={path}>{label}</Link></li>
                     ))}
-                </div>
-            )}
-        </nav>
-    );
+                </ul>
+            </div>
+            <div className="navbar-end">
+                <a
+                    href="https://github.com/1820ankit2029"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn btn-primary flex items-center gap-2"
+                >
+                    <FontAwesomeIcon icon={faGithub} className="text-xl" />
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    )
 };
-
-// const Navbar = () => {
-//     return (
-//         <nav className="fixed top-0 w-full bg-gray-900 text-white shadow-lg flex justify-between items-center p-4">
-//             <h1 className="text-xl font-bold">Ankit Kumar</h1>
-//             <div className="flex items-center space-x-4">
-//                 <Link to="/">Home</Link>
-//                 <Link to="/about">About</Link>
-//                 <Link to="/skills">Skills</Link>
-//                 <Link to="/projects">Projects</Link>
-//                 <Link to="/contact">Contact</Link>
-
-//             </div>
-//             <DarkModeToggle />
-//         </nav>
-//     );
-// };
 
 export default Navbar;
