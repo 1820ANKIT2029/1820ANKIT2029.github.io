@@ -10,7 +10,7 @@ export default function GithubButton() {
             className="btn btn-primary flex items-center gap-2"
         >
             <FontAwesomeIcon icon={faGithub} className="text-xl" />
-            View on GitHub
+            <span className="hidden sm:inline">View on GitHub</span>
         </a>
     );
 }

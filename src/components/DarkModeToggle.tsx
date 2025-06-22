@@ -1,17 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function ThemeToggle() {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
-    <button onClick={toggleTheme} className="btn btn-primary">
-      {theme === "light" ? "☀️ Light" : "🌙 Dark"} Mode
+    <button onClick={toggleTheme} className="btn">
+      {theme === "light" ? "☀️" : "🌙"} <span className="hidden sm:inline">Mode</span>
     </button>
   );
 }

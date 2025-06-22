@@ -21,25 +21,25 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section id="skills" className="py-16 bg-white dark:bg-gray-900">
+    <section id="skills" className="py-16">
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-gray-800 dark:text-gray-100 text-center mb-4">
+        <h2 className="text-3xl font-bold text-center mb-4">
           <span className="text-indigo-600">⚡</span> Skills
         </h2>
-        <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
+        <p className="text-center mb-8">
           A selection of technologies I'm proficient in.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
           {skills.map((skill) => (
             <div
               key={skill.name}
-              className="bg-gray-100 dark:bg-gray-800 rounded-lg shadow-md p-6 flex items-center transition duration-300 hover:scale-105"
+              className="bg-base-200 rounded-lg shadow-md p-6 flex items-center transition duration-300 hover:scale-105"
             >
-              <div className="mr-4 text-gray-600 dark:text-gray-400">
+              <div className="mr-4 ">
                 {skill.icon}
               </div>
-              <span className="text-lg font-medium text-gray-800 dark:text-gray-100">
+              <span className="text-lg font-medium ">
                 {skill.name}
               </span>
             </div>

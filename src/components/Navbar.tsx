@@ -1,14 +1,13 @@
-import { Link } from "react-router-dom";
 import GithubButton from "./GithubButton";
-
+import ThemeToggle from "./DarkModeToggle";
 
 const Navbar = () => {
     const menulist = {
-        "Home": "/",
-        "About": "/about",
-        "Skills": "/skills",
-        "Projects": "projects",
-        "Contact": "contact"
+        "Home": "#",
+        "About": "#about",
+        "Skills": "#skills",
+        "Projects": "#projects",
+        "Contact": "#contact"
     };
 
     return (
@@ -34,7 +33,7 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                     >
                         {Object.entries(menulist).map(([label, path]) => (
-                            <li className="text-base"><Link to={path}>{label}</Link></li>
+                            <li className="text-base"><a href={path}>{label}</a></li>
                         ))}
                     </ul>
                 </div>
@@ -43,11 +42,12 @@ const Navbar = () => {
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">
                     {Object.entries(menulist).map(([label, path]) => (
-                        <li className="text-lg"><Link to={path}>{label}</Link></li>
+                        <li className="text-lg"><a href={path}>{label}</a></li>
                     ))}
                 </ul>
             </div>
-            <div className="navbar-end">
+            <div className="navbar-end gap-2">
+                <ThemeToggle />
                 <GithubButton />
             </div>
         </div>

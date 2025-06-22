@@ -1,4 +1,3 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar.tsx";
 import Hero from "./components/Hero.tsx";
 import About from "./components/About.tsx";
@@ -10,17 +9,15 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <main className="dark:bg-black">
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Hero />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/skills" element={<Skills />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Contact />
       <Footer />
-    </Router>
+    </main>
   );
 }
 
