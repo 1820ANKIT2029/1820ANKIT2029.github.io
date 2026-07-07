@@ -1,53 +1,69 @@
-import { DiJavascript1 } from 'react-icons/di';
-import { FaReact, FaNodeJs, FaDatabase, FaGitAlt, FaJava, FaPython } from 'react-icons/fa'; // Import icons
-import { SiCplusplus, SiGo, SiMysql, SiNextdotjs, SiSocketdotio } from "react-icons/si";
+/**
+ * Skills.tsx — reads all values from config.ts
+ */
+import { useRef } from 'react';
+import { motion, useInView, type Variants } from 'framer-motion';
+import { skillsConfig, type SkillCategory } from '../config';
 
-const skills = [
-  { name: "C", icon: <DiJavascript1 className="text-2xl" /> }, // No specific C icon in react-icons, using JS for now
-  { name: "Java", icon: <FaJava className="text-2xl" /> },
-  { name: "Go", icon: <SiGo className="text-2xl" /> },
-  { name: "Python", icon: <FaPython className="text-xl" /> },
-  { name: "C++", icon: <SiCplusplus className="text-xl" /> },
-  { name: "JavaScript", icon: <DiJavascript1 className="text-xl" /> },
-  { name: "Node.js", icon: <FaNodeJs className="text-2xl" /> },
-  { name: "Express.js", icon: <FaNodeJs className="text-2xl" /> }, // Using Node.js icon as a placeholder, could find a better one
-  { name: "React.js", icon: <FaReact className="text-2xl" /> },
-  { name: "Next.js", icon: <SiNextdotjs className="text-2xl" /> },
-  { name: "Socket.IO", icon: <SiSocketdotio className="text-2xl" /> },
-  { name: "MongoDB", icon: <FaDatabase className="text-2xl" /> },
-  { name: "SQL", icon: <SiMysql className="text-xl" /> },
-  { name: "Git/GitHub", icon: <FaGitAlt className="text-2xl" /> },
-];
+const containerVariants: Variants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.10 } },
+};
+const itemVariants: Variants = {
+  hidden:  { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] } },
+};
 
-const Skills = () => {
+function SkillCard({ category, delay = 0 }: { category: SkillCategory; delay?: number }) {
   return (
-    <section id="skills" className="py-16">
-      <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-4">
-          <span className="text-indigo-600">⚡</span> Skills
-        </h2>
-        <p className="text-center mb-8">
-          A selection of technologies I'm proficient in.
-        </p>
+    <motion.div variants={itemVariants} transition={{ delay }} className="ap-surface-card rounded-xl p-ap-lg">
+      <div className="w-10 h-10 rounded-ap-lg bg-ap-surface-high flex items-center justify-center mb-ap-md">
+        <span className="material-symbols-outlined text-ap-secondary">{category.icon}</span>
+      </div>
+      <h4 className="font-ap-display text-ap-headline-md text-ap-on-surface mb-ap-md">
+        {category.title}
+      </h4>
+      <ul className="space-y-ap-sm">
+        {category.items.map((item) => (
+          <li key={item} className="flex items-center gap-2 font-ap-mono text-ap-caption text-ap-on-surface-variant">
+            <div className="w-1.5 h-1.5 bg-ap-outline-variant flex-shrink-0" />
+            {item}
+          </li>
+        ))}
+      </ul>
+    </motion.div>
+  );
+}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 ">
-          {skills.map((skill) => (
-            <div
-              key={skill.name}
-              className="bg-base-200 rounded-lg shadow-md p-6 flex items-center transition duration-300 hover:scale-105"
-            >
-              <div className="mr-4 ">
-                {skill.icon}
-              </div>
-              <span className="text-lg font-medium ">
-                {skill.name}
-              </span>
-            </div>
+export default function Skills() {
+  const ref    = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <section id="skills" className="bg-ap-bg py-ap-xl md:py-ap-xxl">
+      <div className="max-w-ap mx-auto px-ap-lg">
+
+        <motion.div initial="hidden" animate={inView ? 'visible' : 'hidden'} variants={itemVariants} className="mb-ap-xl">
+          <h2 className="font-ap-display text-ap-headline-lg text-ap-on-surface mb-ap-sm">
+            {skillsConfig.heading}
+          </h2>
+          <p className="font-ap-body text-ap-body-md text-ap-on-surface-variant max-w-[600px]">
+            {skillsConfig.subtitle}
+          </p>
+        </motion.div>
+
+        <motion.div
+          ref={ref}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-ap-lg"
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          variants={containerVariants}
+        >
+          {skillsConfig.categories.map((cat, i) => (
+            <SkillCard key={cat.title} category={cat} delay={i * 0.05} />
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
-};
-
-export default Skills;
+}

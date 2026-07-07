@@ -1,3 +1,163 @@
+:root {
+  /* Surface / Background */
+  --ap-bg: #fbf9f9;
+  --ap-surface: #ffffff;
+  --ap-surface-dim: #dbdad9;
+  --ap-surface-bright: #fbf9f9;
+  --ap-surface-low: #f5f3f3;
+  --ap-surface-mid: #efeded;
+  --ap-surface-high: #e9e8e7;
+  --ap-surface-highest: #e3e2e2;
+  
+  /* On-surface */
+  --ap-on-surface: #1b1c1c;
+  --ap-on-surface-variant: #444748;
+  
+  /* Outline */
+  --ap-outline: #747878;
+  --ap-outline-variant: #c4c7c7;
+  
+  /* Primary */
+  --ap-primary: #000000;
+  --ap-on-primary: #ffffff;
+  --ap-primary-container: #1c1b1b;
+  --ap-primary-fixed: #e5e2e1;
+  --ap-primary-fixed-dim: #c8c6c5;
+  
+  /* Secondary */
+  --ap-secondary: #4b41e1;
+  --ap-on-secondary: #ffffff;
+  --ap-secondary-container: #645efb;
+  --ap-secondary-fixed: #e2dfff;
+  --ap-secondary-fixed-dim: #c3c0ff;
+  --ap-on-secondary-fixed-variant: #3323cc;
+  
+  /* Tertiary */
+  --ap-tertiary: #000000;
+  --ap-tertiary-container: #002113;
+  --ap-on-tertiary-container: #009668;
+  --ap-tertiary-fixed: #6ffbbe;
+  
+  /* Error */
+  --ap-error: #ba1a1a;
+  --ap-error-container: #ffdad6;
+}
+
+.dark, [data-theme="dark"] {
+  /* Dark mode surface / Background */
+  --ap-bg: #111111;
+  --ap-surface: #1a1a1a;
+  --ap-surface-dim: #141414;
+  --ap-surface-bright: #222222;
+  --ap-surface-low: #1c1c1c;
+  --ap-surface-mid: #1e1e1e;
+  --ap-surface-high: #242424;
+  --ap-surface-highest: #2a2a2a;
+  
+  /* On-surface */
+  --ap-on-surface: #e5e5e5;
+  --ap-on-surface-variant: #b0b3b3;
+  
+  /* Outline */
+  --ap-outline: #8d9191;
+  --ap-outline-variant: #3a3b3b;
+  
+  /* Primary */
+  --ap-primary: #ffffff;
+  --ap-on-primary: #000000;
+  --ap-primary-container: #e5e5e5;
+  --ap-primary-fixed: #444748;
+  --ap-primary-fixed-dim: #2f3132;
+  
+  /* Secondary */
+  --ap-secondary: #8c85ff;
+  --ap-on-secondary: #000000;
+  --ap-secondary-container: #4b41e1;
+  --ap-secondary-fixed: #2f25b3;
+  --ap-secondary-fixed-dim: #4b41e1;
+  --ap-on-secondary-fixed-variant: #e2dfff;
+  
+  /* Tertiary */
+  --ap-tertiary: #ffffff;
+  --ap-tertiary-container: #6ffbbe;
+  --ap-on-tertiary-container: #002113;
+  --ap-tertiary-fixed: #004d33;
+  
+  /* Error */
+  --ap-error: #ffb4ab;
+  --ap-error-container: #93000a;
+}
+
 html {
   scroll-behavior: smooth;
+  background-color: var(--ap-bg);
+  color: var(--ap-on-surface);
 }
+
+/* ─── Stitch: Architect Portfolio System component classes ─────────────────── */
+
+/* Material Symbols variation settings */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  user-select: none;
+}
+
+/* Elevated surface card with subtle lift on hover */
+.ap-surface-card {
+  background-color: var(--ap-surface);
+  border: 1px solid var(--ap-outline-variant);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background-color 0.3s ease, border-color 0.3s ease;
+}
+.ap-surface-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+/* Dark mode stronger shadow */
+.dark .ap-surface-card:hover, [data-theme="dark"] .ap-surface-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+/* Hero radial gradient */
+.ap-hero-gradient {
+  background: radial-gradient(circle at 50% -20%, var(--ap-secondary-fixed) 0%, var(--ap-bg) 70%);
+}
+
+/* Dark contact CTA card */
+.ap-contact-card {
+  background-color: var(--ap-primary);
+}
+
+/* Scroll-reveal animation */
+.ap-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.ap-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for reveal groups */
+.ap-reveal-delay-1 { transition-delay: 0.1s; }
+.ap-reveal-delay-2 { transition-delay: 0.2s; }
+.ap-reveal-delay-3 { transition-delay: 0.3s; }
+.ap-reveal-delay-4 { transition-delay: 0.4s; }
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--ap-bg); }
+::-webkit-scrollbar-thumb { background: var(--ap-surface-highest); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--ap-outline-variant); }
+
+/* Glassmorphism sticky nav */
+.ap-nav {
+  background: color-mix(in srgb, var(--ap-surface) 90%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid color-mix(in srgb, var(--ap-outline-variant) 30%, transparent);
+}

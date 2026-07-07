@@ -1,24 +1,26 @@
-import Navbar from "./components/Navbar.tsx";
-import Hero from "./components/Hero.tsx";
-import About from "./components/About.tsx";
-import Skills from "./components/Skills.tsx";
-import Projects from "./components/Projects.tsx";
-import Contact from "./components/Contact.tsx";
-import Footer from "./components/Footer.tsx";
+import Navbar        from './components/Navbar';
+import Hero          from './components/Hero';
+import About         from './components/About';
+import Skills        from './components/Skills';
+import CodingProfiles from './components/CodingProfiles';
+import Projects      from './components/Projects';
+import Contact       from './components/Contact';
+import Footer        from './components/Footer';
 import './App.css';
 
-function App() {
+export default function App() {
   return (
-    <main className="dark:bg-black">
+    <div className="bg-ap-bg min-h-screen">
       <Navbar />
-      <Hero />
-      <About />
-      <Skills />
-      <Projects />
-      <Contact />
+      <main>
+        <Hero />
+        <About />
+        <Skills />
+        <CodingProfiles />
+        <Projects />
+        <Contact />
+      </main>
       <Footer />
-    </main>
+    </div>
   );
 }
-
-export default App;
