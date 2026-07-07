@@ -17,6 +17,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "axios": "^1.7.9",
+    "browserslist": "^4.28.5",
+    "caniuse-lite": "^1.0.30001803",
     "daisyui": "^4.12.23",
     "framer-motion": "^11.18.0",
     "react": "^18.3.1",
