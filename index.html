@@ -1,22 +1,51 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark" data-theme="dark">
   <head>
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (!theme) theme = 'dark';
+          document.documentElement.className = theme;
+          document.documentElement.setAttribute('data-theme', theme);
+        } catch (e) {}
+      })();
+    </script>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/svg.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>Ankit Kumar - Portfolio</title>
-    <meta name="description" content="Portfolio of Ankit Kumar, a CS student at MNNIT with expertise in low-level programming and web development.">
-    <meta name="keywords" content="Ankit Kumar, Portfolio, MNNIT, React Developer, Web Developer">
-    <meta property="og:title" content="Ankit Kumar - Portfolio">
-    <meta property="og:description" content="Showcasing my projects, skills, and experience in software development.">
-    <meta property="og:image" content="https://1820ankit2029.github.io/profile.jpeg">
+    <title>Ankit Kumar — Portfolio</title>
+    <meta name="description" content="Portfolio of Ankit Kumar, CSE student at MNNIT with expertise in backend systems and competitive programming.">
+    <meta name="keywords" content="Ankit Kumar, Portfolio, MNNIT, Backend Developer, React, Go, Java">
+    <meta name="author" content="Ankit Kumar">
+    <meta name="robots" content="index, follow">
+    <meta name="theme-color" content="#111111" />
+    <link rel="canonical" href="https://1820ankit2029.github.io/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
     <meta property="og:url" content="https://1820ankit2029.github.io">
+    <meta property="og:title" content="Ankit Kumar — Portfolio">
+    <meta property="og:description" content="Portfolio of Ankit Kumar, CSE student at MNNIT with expertise in backend systems and competitive programming.">
+    <meta property="og:image" content="https://1820ankit2029.github.io/profile.jpeg">
+    <meta property="og:site_name" content="Ankit Kumar Portfolio">
+
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <script type="module" crossorigin src="/assets/index-D5ATUp3k.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-De00P7Rw.css">
+    <meta name="twitter:url" content="https://1820ankit2029.github.io">
+    <meta name="twitter:title" content="Ankit Kumar — Portfolio">
+    <meta name="twitter:description" content="Portfolio of Ankit Kumar, CSE student at MNNIT with expertise in backend systems and competitive programming.">
+    <meta name="twitter:image" content="https://1820ankit2029.github.io/profile.jpeg">
+    <!-- Stitch: Architect Portfolio System fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script type="module" crossorigin src="/assets/index-CB5yjB_I.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-BbI_txnK.css">
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root"></div>
   </body>
 </html>
