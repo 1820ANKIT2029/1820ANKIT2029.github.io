@@ -89,13 +89,8 @@ function ProfileCard({ platform, liveData }: { platform: CodingPlatform; liveDat
         )}
       </div>
 
-      {/* Name & Handle */}
-      <div className="mb-ap-lg">
-        <h3 className="font-ap-display text-ap-headline-md text-ap-on-surface mb-1">{platform.name}</h3>
-        <p className="font-ap-mono text-ap-caption text-ap-secondary">
-          @{platform.id === 'leetcode' ? social.leetcodeUsername : platform.id === 'codeforces' ? social.codeforceHandle : ''}
-        </p>
-      </div>
+      {/* Name */}
+      <h3 className="font-ap-display text-ap-headline-md text-ap-on-surface mb-ap-lg">{platform.name}</h3>
 
       {/* Stats */}
       <div className="flex-1 flex flex-col justify-center">
