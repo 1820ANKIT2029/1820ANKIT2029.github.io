@@ -182,7 +182,7 @@ export const skillsConfig = {
     {
       icon: 'cloud_done',
       title: 'Architecture',
-      items: ['Docker & K8s', 'AWS / Azure', 'CI/CD Pipelines', 'System Design', 'Microservices'],
+      items: ['Docker & K8s', 'AWS', 'CI/CD Pipelines', 'System Design', 'Microservices'],
     },
   ] as SkillCategory[],
 };
